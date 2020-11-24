@@ -1,4 +1,5 @@
 import os
+from os import path
 import sys
 import numpy as np
 import random
@@ -11,11 +12,26 @@ from Neural_Models import new_Dense
 from Evaluations import calc_metrics
 
 def main():
-    data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
-    mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
+    #Get Files
+    args = sys.argv
+    if(len(sys.argv) != 4):
+        print("Wrong Number of Arguments! Expecting 3: <train_matrix> <train_pdb> <test_matrix>")
+        sys.exit()
+    else:
+        data_path_train = "./Data/NeuralRun_Data/Matrix_Data/" + str(args[1])
+        mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/" + str(args[2])
+        data_path_test = "./Data/NeuralRun_Data/Matrix_Data/" + str(args[3])
+        test_file = str(args[3])
+    if(path.exists(data_path_train) and path.exists(mapping_train) and path.exists(data_path_test)):
+        print("Found All Input Files!")
+    else:
+        print("Error Finding Input Files")
+        sys.exit()
 
-    data_path_test = "./Data/NeuralRun_Data/Matrix_Data/regular70.txt"
-    test_file = "regular70.txt"
+    #data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
+    #mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
+    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/regular70.txt"
+
     scale_factor = 1000
     IF_alpha = 0.4
     epochs = 40

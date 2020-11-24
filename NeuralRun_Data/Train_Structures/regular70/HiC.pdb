@@ -1,0 +1,199 @@
+ATOM      1  CA  GLY A   1     -14.312   6.541   5.215  1.00 75.00           C
+ATOM      2  CA  GLY A   2     -15.101   5.388   5.434  1.00 75.00           C
+ATOM      3  CA  GLY A   3     -15.958   6.306   4.783  1.00 75.00           C
+ATOM      4  CA  GLY A   4     -15.997   7.146   3.668  1.00 75.00           C
+ATOM      5  CA  GLY A   5     -14.834   6.549   4.209  1.00 75.00           C
+ATOM      6  CA  GLY A   6     -14.904   7.917   4.563  1.00 75.00           C
+ATOM      7  CA  GLY A   7     -14.002   6.950   4.486  1.00 75.00           C
+ATOM      8  CA  GLY A   8     -15.393   6.994   4.741  1.00 75.00           C
+ATOM      9  CA  GLY A   9     -14.415   7.421   5.119  1.00 75.00           C
+ATOM     10  CA  GLY A  10     -15.097   6.189   4.981  1.00 75.00           C
+ATOM     11  CA  GLY A  11     -15.823   6.817   5.501  1.00 75.00           C
+ATOM     12  CA  GLY A  12     -15.795   7.905   4.598  1.00 75.00           C
+ATOM     13  CA  GLY A  13     -16.591   7.740   3.964  1.00 75.00           C
+ATOM     14  CA  GLY A  14     -16.245   7.140   4.524  1.00 75.00           C
+ATOM     15  CA  GLY A  15     -15.556   8.114   3.765  1.00 75.00           C
+ATOM     16  CA  GLY A  16     -14.432   8.273   2.921  1.00 75.00           C
+ATOM     17  CA  GLY A  17     -13.762   7.661   4.006  1.00 75.00           C
+ATOM     18  CA  GLY A  18     -13.245   6.506   4.637  1.00 75.00           C
+ATOM     19  CA  GLY A  19     -13.640   6.560   3.749  1.00 75.00           C
+ATOM     20  CA  GLY A  20     -14.339   7.391   2.843  1.00 75.00           C
+ATOM     21  CA  GLY A  21     -15.171   7.331   3.946  1.00 75.00           C
+ATOM     22  CA  GLY A  22     -14.496   6.527   2.998  1.00 75.00           C
+ATOM     23  CA  GLY A  23     -14.357   7.084   3.679  1.00 75.00           C
+ATOM     24  CA  GLY A  24     -15.295   6.869   3.194  1.00 75.00           C
+ATOM     25  CA  GLY A  25     -14.562   7.949   3.741  1.00 75.00           C
+ATOM     26  CA  GLY A  26     -15.125   7.737   3.082  1.00 75.00           C
+ATOM     27  CA  GLY A  27     -14.727   7.345   1.783  1.00 75.00           C
+ATOM     28  CA  GLY A  28     -15.530   7.603   2.300  1.00 75.00           C
+ATOM     29  CA  GLY A  29     -14.846   8.152   2.142  1.00 75.00           C
+ATOM     30  CA  GLY A  30     -15.173   6.786   2.315  1.00 75.00           C
+ATOM     31  CA  GLY A  31     -13.776   6.773   2.534  1.00 75.00           C
+ATOM     32  CA  GLY A  32     -13.545   7.278   3.231  1.00 75.00           C
+ATOM     33  CA  GLY A  33     -13.007   6.453   2.216  1.00 75.00           C
+ATOM     34  CA  GLY A  34     -13.731   6.475   1.696  1.00 75.00           C
+ATOM     35  CA  GLY A  35     -13.600   7.674   2.434  1.00 75.00           C
+ATOM     36  CA  GLY A  36     -13.030   6.563   3.100  1.00 75.00           C
+ATOM     37  CA  GLY A  37     -12.826   6.229   3.900  1.00 75.00           C
+ATOM     38  CA  GLY A  38     -12.706   5.352   3.999  1.00 75.00           C
+ATOM     39  CA  GLY A  39     -12.946   5.683   3.207  1.00 75.00           C
+ATOM     40  CA  GLY A  40     -13.746   6.037   3.035  1.00 75.00           C
+ATOM     41  CA  GLY A  41     -13.182   5.359   2.411  1.00 75.00           C
+ATOM     42  CA  GLY A  42     -13.831   5.169   3.219  1.00 75.00           C
+ATOM     43  CA  GLY A  43     -13.317   4.434   3.245  1.00 75.00           C
+ATOM     44  CA  GLY A  44     -13.527   5.679   3.883  1.00 75.00           C
+ATOM     45  CA  GLY A  45     -14.009   6.059   4.529  1.00 75.00           C
+ATOM     46  CA  GLY A  46     -15.150   5.654   3.798  1.00 75.00           C
+ATOM     47  CA  GLY A  47     -14.845   4.605   2.899  1.00 75.00           C
+ATOM     48  CA  GLY A  48     -15.439   5.886   2.984  1.00 75.00           C
+ATOM     49  CA  GLY A  49     -15.665   6.366   3.944  1.00 75.00           C
+ATOM     50  CA  GLY A  50     -16.059   7.072   2.782  1.00 75.00           C
+ATOM     51  CA  GLY A  51     -16.187   6.308   3.223  1.00 75.00           C
+ATOM     52  CA  GLY A  52     -16.828   6.926   3.208  1.00 75.00           C
+ATOM     53  CA  GLY A  53     -15.910   6.286   2.343  1.00 75.00           C
+ATOM     54  CA  GLY A  54     -14.702   6.467   1.629  1.00 75.00           C
+ATOM     55  CA  GLY A  55     -14.065   5.480   2.417  1.00 75.00           C
+ATOM     56  CA  GLY A  56     -14.336   6.005   3.702  1.00 75.00           C
+ATOM     57  CA  GLY A  57     -14.803   5.977   2.367  1.00 75.00           C
+ATOM     58  CA  GLY A  58     -14.686   5.206   1.840  1.00 75.00           C
+ATOM     59  CA  GLY A  59     -14.662   5.459   3.078  1.00 75.00           C
+ATOM     60  CA  GLY A  60     -13.727   4.658   2.486  1.00 75.00           C
+ATOM     61  CA  GLY A  61     -14.551   4.473   1.351  1.00 75.00           C
+ATOM     62  CA  GLY A  62     -15.907   4.311   1.722  1.00 75.00           C
+ATOM     63  CA  GLY A  63     -15.541   3.813   2.501  1.00 75.00           C
+ATOM     64  CA  GLY A  64     -15.378   5.215   2.401  1.00 75.00           C
+ATOM     65  CA  GLY A  65     -15.718   4.174   3.296  1.00 75.00           C
+ATOM     66  CA  GLY A  66     -15.092   4.444   2.059  1.00 75.00           C
+ATOM     67  CA  GLY A  67     -15.530   5.044   3.262  1.00 75.00           C
+ATOM     68  CA  GLY A  68     -15.555   5.537   4.583  1.00 75.00           C
+ATOM     69  CA  GLY A  69     -16.032   5.532   3.813  1.00 75.00           C
+ATOM     70  CA  GLY A  70     -15.163   4.737   4.596  1.00 75.00           C
+ATOM     71  CA  GLY A  71     -13.834   5.188   4.773  1.00 75.00           C
+ATOM     72  CA  GLY A  72     -14.435   5.128   3.873  1.00 75.00           C
+ATOM     73  CA  GLY A  73     -14.300   4.487   4.478  1.00 75.00           C
+ATOM     74  CA  GLY A  74     -14.669   5.476   4.659  1.00 75.00           C
+ATOM     75  CA  GLY A  75     -13.616   4.800   4.001  1.00 75.00           C
+ATOM     76  CA  GLY A  76     -14.182   4.384   3.453  1.00 75.00           C
+ATOM     77  CA  GLY A  77     -14.512   3.765   4.002  1.00 75.00           C
+ATOM     78  CA  GLY A  78     -15.014   4.460   3.762  1.00 75.00           C
+ATOM     79  CA  GLY A  79     -14.264   3.970   2.668  1.00 75.00           C
+ATOM     80  CA  GLY A  80     -13.644   3.764   3.800  1.00 75.00           C
+ATOM     81  CA  GLY A  81     -14.933   3.760   3.217  1.00 75.00           C
+ATOM     82  CA  GLY A  82     -14.215   3.234   3.168  1.00 75.00           C
+ATOM     83  CA  GLY A  83     -15.361   3.499   3.954  1.00 75.00           C
+ATOM     84  CA  GLY A  84     -16.660   3.915   3.579  1.00 75.00           C
+ATOM     85  CA  GLY A  85     -17.144   5.050   2.887  1.00 75.00           C
+ATOM     86  CA  GLY A  86     -16.809   4.234   2.760  1.00 75.00           C
+ATOM     87  CA  GLY A  87     -16.918   4.564   4.131  1.00 75.00           C
+ATOM     88  CA  GLY A  88     -17.404   4.375   3.408  1.00 75.00           C
+ATOM     89  CA  GLY A  89     -16.866   5.622   3.511  1.00 75.00           C
+ATOM     90  CA  GLY A  90     -17.423   5.299   4.128  1.00 75.00           C
+ATOM     91  CA  GLY A  91     -16.445   5.583   4.602  1.00 75.00           C
+ATOM     92  CA  GLY A  92     -16.546   6.265   4.038  1.00 75.00           C
+ATOM     93  CA  GLY A  93     -16.226   5.475   2.909  1.00 75.00           C
+ATOM     94  CA  GLY A  94     -15.838   4.684   4.017  1.00 75.00           C
+ATOM     95  CA  GLY A  95     -16.037   4.654   2.617  1.00 75.00           C
+ATOM     96  CA  GLY A  96     -16.763   5.466   2.198  1.00 75.00           C
+ATOM     97  CA  GLY A  97     -16.466   4.764   3.390  1.00 75.00           C
+ATOM     98  CA  GLY A  98     -16.140   3.432   3.039  1.00 75.00           C
+ATOM     99  CA  GLY A  99     -15.387   2.993   3.221  1.00 75.00           C
+ATOM    100  CA  GLY A 100     -14.814   3.299   2.463  1.00 75.00           C
+CONECT    1    2
+CONECT    2    3
+CONECT    3    4
+CONECT    4    5
+CONECT    5    6
+CONECT    6    7
+CONECT    7    8
+CONECT    8    9
+CONECT    9   10
+CONECT   10   11
+CONECT   11   12
+CONECT   12   13
+CONECT   13   14
+CONECT   14   15
+CONECT   15   16
+CONECT   16   17
+CONECT   17   18
+CONECT   18   19
+CONECT   19   20
+CONECT   20   21
+CONECT   21   22
+CONECT   22   23
+CONECT   23   24
+CONECT   24   25
+CONECT   25   26
+CONECT   26   27
+CONECT   27   28
+CONECT   28   29
+CONECT   29   30
+CONECT   30   31
+CONECT   31   32
+CONECT   32   33
+CONECT   33   34
+CONECT   34   35
+CONECT   35   36
+CONECT   36   37
+CONECT   37   38
+CONECT   38   39
+CONECT   39   40
+CONECT   40   41
+CONECT   41   42
+CONECT   42   43
+CONECT   43   44
+CONECT   44   45
+CONECT   45   46
+CONECT   46   47
+CONECT   47   48
+CONECT   48   49
+CONECT   49   50
+CONECT   50   51
+CONECT   51   52
+CONECT   52   53
+CONECT   53   54
+CONECT   54   55
+CONECT   55   56
+CONECT   56   57
+CONECT   57   58
+CONECT   58   59
+CONECT   59   60
+CONECT   60   61
+CONECT   61   62
+CONECT   62   63
+CONECT   63   64
+CONECT   64   65
+CONECT   65   66
+CONECT   66   67
+CONECT   67   68
+CONECT   68   69
+CONECT   69   70
+CONECT   70   71
+CONECT   71   72
+CONECT   72   73
+CONECT   73   74
+CONECT   74   75
+CONECT   75   76
+CONECT   76   77
+CONECT   77   78
+CONECT   78   79
+CONECT   79   80
+CONECT   80   81
+CONECT   81   82
+CONECT   82   83
+CONECT   83   84
+CONECT   84   85
+CONECT   85   86
+CONECT   86   87
+CONECT   87   88
+CONECT   88   89
+CONECT   89   90
+CONECT   90   91
+CONECT   91   92
+CONECT   92   93
+CONECT   93   94
+CONECT   94   95
+CONECT   95   96
+CONECT   96   97
+CONECT   97   98
+CONECT   98   99
+CONECT   99  100

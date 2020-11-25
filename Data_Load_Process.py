@@ -25,6 +25,8 @@ def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train
             y_train_z.append(train_labels[2][matrix_table_train[i][0] - 1])
         y_train = [y_train_x, y_train_y, y_train_z]
         x_train = x_train.reshape(x_train.shape[0], x_train.shape[1], 1)
+    else:
+        scales_cal_values = ""
 
     x_train_FISH = matrix_to_table_FISH()
     x_train_FISH = np.array(IF_to_distance(x_train_FISH, IF_alpha))
@@ -40,8 +42,9 @@ def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train
     return_shape = (x_test.shape[1], 1)
     x_test = x_test.reshape(x_test.shape[0], x_test.shape[1], 1)
 
-    file_train.close()
-    file_train_mapping.close()
+    if (run_type == 0):
+        file_train.close()
+        file_train_mapping.close()
 
     return x_train, y_train, x_train_FISH, y_train_FISH, x_test, return_shape, scales_cal_values, matrix_table_test
 

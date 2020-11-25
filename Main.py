@@ -16,7 +16,7 @@ def main():
     args = sys.argv
     run_type = 0
     train_FISH = 1
-    '''
+    
     if(len(sys.argv) == 4):
         print("Running with Finetuning")
         data_path_train = "./Data/NeuralRun_Data/Matrix_Data/" + str(args[1])
@@ -32,6 +32,8 @@ def main():
     elif(len(sys.argv) == 2):
         print("Running without Finetuning")
         data_path_test = "./Data/NeuralRun_Data/Matrix_Data/" + str(args[1])
+        data_path_train = ""
+        mapping_train = ""
         test_file = str(args[1])
         run_type = 1
         if(path.exists(data_path_test)):
@@ -42,11 +44,11 @@ def main():
     else:
         print("Wrong Parameters Set!")
         sys.exit()
-    '''
-    data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
-    mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
-    data_path_test = "./Data/NeuralRun_Data/Matrix_Data/regular70.txt"
-    test_file = "regular70.txt"
+    
+    #data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
+    #mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
+    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/regular70.txt"
+    #test_file = "regular70.txt"
 
     scale_factor = 100
     IF_alpha = 0.4
@@ -62,9 +64,10 @@ def main():
     z_model = new_Dense(scale_factor+1, input_shape)
 
     #Train Models
-    y_train_cat_x = keras.utils.to_categorical(y_train[0], scale_factor+1)
-    y_train_cat_y = keras.utils.to_categorical(y_train[1], scale_factor+1)
-    y_train_cat_z = keras.utils.to_categorical(y_train[2], scale_factor+1)
+    if(run_type == 0):
+        y_train_cat_x = keras.utils.to_categorical(y_train[0], scale_factor+1)
+        y_train_cat_y = keras.utils.to_categorical(y_train[1], scale_factor+1)
+        y_train_cat_z = keras.utils.to_categorical(y_train[2], scale_factor+1)
     y_train_cat_x_FISH = keras.utils.to_categorical(y_train_FISH[0], scale_factor+1)
     y_train_cat_y_FISH = keras.utils.to_categorical(y_train_FISH[1], scale_factor+1)
     y_train_cat_z_FISH = keras.utils.to_categorical(y_train_FISH[2], scale_factor+1)
@@ -104,6 +107,8 @@ def main():
 
     #Unscale Data
     all_predictions = [val_x, val_y, val_z]
+    if(run_type == 1):
+        scales_cal_values = [1, 1, 1]
     all_predictions_scaled = rescale_mapping(all_predictions, scales_cal_values, matrix_table_test)
 
     #Generate PDB File

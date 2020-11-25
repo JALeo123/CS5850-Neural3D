@@ -232,7 +232,7 @@ def rescale_mapping(all_predictions, scales_cal_values, matrix_table_test):
 
 #Generate PDB file
 def generate_PDB(all_predictions, output_file_message):
-    out_pdb = open("./Generated_Outputs/OutputPDB.pbd", "w")
+    out_pdb = open("./Generated_Outputs/OutputPDB.pdb", "w")
 
     out_pdb.write(output_file_message + "\n")
     for i in range(1, len(all_predictions[0])):
@@ -248,7 +248,8 @@ def generate_PDB(all_predictions, output_file_message):
             count_str = "    " + str(i)
             count_str2 = "        " + str(i)
         out_pdb.write("ATOM" + count_str + " " + "CA" + " " + "MET" + " " + "A" + count_str2 + " "
-                      + str(round(all_predictions[0][i-1],3)) + "  " + str(round(all_predictions[1][i-1],3)) + "  " + str(round(all_predictions[2][i-1],3)) + "  \n")
+                      + str(round(all_predictions[0][i-1]*100,3)) + "  " + str(round(all_predictions[1][i-1]*100,3)) + "  "
+                      + str(round(all_predictions[2][i-1]*100,3)) + "  " + str(1.00) + "  \n")
 
     for i in range(1, len(all_predictions[0])):
         count_str = ""
@@ -268,7 +269,7 @@ def generate_PDB(all_predictions, output_file_message):
         else:
             count_str = "  " + str(i)
             count_str2 = "  " + str(i+1)
-        out_pdb.write("CONNECT" + count_str + count_str2 + "\n")
+        out_pdb.write("CONECT" + count_str + count_str2 + "\n")
 
     out_pdb.write("END")
 

@@ -9,7 +9,7 @@ Put matrix files in: NeuralRun_Data/Matrix_Data
 Put PDB file in: NeuralRun_Data/Train_Structures
 
 Format to Run:
-	python Main.py <training matrix> <training pdb> <testing matrix>
+	python Main.py -training matrix- -training pdb- -testing matrix-
 Generated structure will be for testing matrix data
 
 Example Run For Tested Dataset, this data is on Git:
@@ -24,5 +24,5 @@ Code Dependency Packages:
 	numpy, keras, random, math, scipy, sklearn
 
 Get Dependencies by:
-	pip install <package>
+	pip install -package-
 

@@ -22,6 +22,7 @@ Note, these tests are performed with a GPU in the system. Without a GPU, the run
 
 Code Dependency Packages:
 	numpy, keras, random, math, scipy, sklearn
+
 Get Dependencies by:
 	pip install <package>
 

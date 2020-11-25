@@ -1,14 +1,6 @@
 import keras
 from keras.models import Sequential, Model
 from keras.layers import Dense, Dropout, Flatten, LSTM, Activation
-from keras.layers import Conv1D, Conv2D, MaxPooling2D, GlobalMaxPooling1D, Input, AveragePooling2D
-from keras.layers.normalization import BatchNormalization
-from keras.regularizers import l2
-from keras.layers.merge import add
-from xgboost import XGBClassifier
-from keras import backend as K
-from keras.losses import categorical_crossentropy
-from sklearn.naive_bayes import GaussianNB
 
 #MultiLayer Dense Model
 def new_Dense(num_classes_in, input_shape):

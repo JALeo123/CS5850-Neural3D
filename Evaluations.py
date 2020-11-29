@@ -20,6 +20,9 @@ def calc_metrics(all_predictions_scaled, matrix_table_test):
             distance = math.sqrt(sub_x + sub_y + sub_z)
             dist_pred.append(distance)
 
+    if(len(dist_pred) > len(dist_actual)):
+        dist_pred = dist_pred[0:len(dist_actual)]
+
     Pearson_val = pearsonr(dist_actual, dist_pred)[0]
     Spearman_val = spearmanr(dist_actual, dist_pred)[0]
     RMSE_val = math.sqrt(mean_squared_error(dist_actual, dist_pred))

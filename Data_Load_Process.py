@@ -3,7 +3,7 @@ import sys
 import numpy as np
 
 # Load Train and Test Data
-def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train_path, scale_factor, IF_alpha, run_type):
+def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train_path, scale_factor, IF_alpha, run_type, method):
     x_train = []
     y_train = []
     x_test = []
@@ -14,7 +14,7 @@ def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train
     if(run_type == 0):
         file_train = open(contact_matrix_path_train, "r")
         file_train_mapping = open(mapping_train_path, "r")
-        matrix_table_train = matrix_to_table(file_train, "Train")
+        matrix_table_train = matrix_to_table(file_train, "Train", method)
         matrix_table_train = IF_to_distance(matrix_table_train, IF_alpha)
         train_labels, scales_cal_values = scale_mapping(file_train_mapping, scale_factor)
         x_train = np.array(matrix_table_train)
@@ -34,7 +34,7 @@ def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train
     y_train_FISH = np.array(scale_mapping_FISH(scale_factor))
 
     file_test = open(contact_matrix_path_test, "r")
-    matrix_table_test = matrix_to_table(file_test, "Test")
+    matrix_table_test = matrix_to_table(file_test, "Test", method)
     matrix_table_test = IF_to_distance(matrix_table_test, IF_alpha)
     x_test = np.array(matrix_table_test)
 
@@ -49,10 +49,9 @@ def load_data(contact_matrix_path_train, contact_matrix_path_test, mapping_train
     return x_train, y_train, x_train_FISH, y_train_FISH, x_test, return_shape, scales_cal_values, matrix_table_test
 
 # Convert from NxN matrix to matrix table
-def matrix_to_table(file, type):
+def matrix_to_table(file, type, method):
     lines = file.readlines()
     num_lines = len(lines)
-    write_to_file = True
 
     matrix_lists = []
     for line in lines:
@@ -72,8 +71,8 @@ def matrix_to_table(file, type):
                 matrix_table.append(row.copy())
 
     # Raw Matrix Table to File
-    if (write_to_file == True):
-        out_file = open("./Generated_Outputs/Contact_Matrix_Table_" + type + ".txt", "w")
+    if(method == "Neural_3D_Modeling"):
+        out_file = open("./Output/simulated_output/" + method + "/Contact_Matrix_Table_" + type + ".txt", "w")
         for row in matrix_table:
             out_file.write(str(row[0]) + '\t' + str(row[1]) + '\t' + str(row[2]) + '\n')
         out_file.close()
@@ -231,8 +230,8 @@ def rescale_mapping(all_predictions, scales_cal_values, matrix_table_test):
     return rescaled_predictions
 
 #Generate PDB file
-def generate_PDB(all_predictions, output_file_message):
-    out_pdb = open("./Generated_Outputs/OutputPDB.pdb", "w")
+def generate_PDB(all_predictions, output_file_message, method, test_file):
+    out_pdb = open("./simulated_output/" + method + "/" + test_file + ".pdb", "w")
 
     out_pdb.write(output_file_message + "\n")
     for i in range(1, len(all_predictions[0])):
@@ -276,8 +275,8 @@ def generate_PDB(all_predictions, output_file_message):
     out_pdb.close()
 
 #Generate Log File
-def generate_log(test_file, IF_alpha, scale_factor, metrics):
-    out_log = open("./Generated_Outputs/Output.log", "w")
+def generate_log(test_file, IF_alpha, scale_factor, metrics, method):
+    out_log = open("./simulated_output/" + method + "/" + test_file + ".log", "w")
 
     out_log.write("Input File: " + test_file + "\n")
     out_log.write("IF Alpha Value: " + str(IF_alpha) + "\n")
@@ -294,3 +293,114 @@ def generate_log(test_file, IF_alpha, scale_factor, metrics):
     print("AVG Pearson Correlation Dist vs. Reconstructed Dist: " + str(metrics[2]))
 
     out_log.close()
+
+def alternate_method_structures(method, test_file):
+    if (method == "HSA" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/HSA/regular25.txt"
+    elif (method == "HSA" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/HSA/regular70.txt"
+    elif (method == "HSA" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/HSA/regular90.txt"
+
+    elif (method == "ChromSDE" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/ChromSDE/regular25.pos"
+    elif (method == "ChromSDE" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/ChromSDE/regular70.pos"
+    elif (method == "ChromSDE" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/ChromSDE/regular90.pos"
+
+    elif (method == "Pastis" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/pastis/PM1.regular25.pdb"
+    elif (method == "Pastis" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/pastis/PM1.regular70.pdb"
+    elif (method == "Pastis" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/pastis/PM1.regular90.pdb"
+
+    elif (method == "ShRec3D" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/Shrec3D/regu25.xyz"
+    elif (method == "ShRec3D" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/Shrec3D/regu70.xyz"
+    elif (method == "ShRec3D" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/Shrec3D/regu90.xyz"
+
+    elif (method == "3DMax" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/3DMax/regular25.pdb"
+    elif (method == "3DMax" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/3DMax/regular70.pdb"
+    elif (method == "3DMax" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/3DMax/regular90.pdb"
+
+    elif (method == "LorDG" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/LorDG/regular25.pdb"
+    elif (method == "LorDG" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/LorDG/regular70.pdb"
+    elif (method == "LorDG" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/LorDG/regular90.pdb"
+
+    elif (method == "Chromosome3D" and test_file == "regular25.txt"):
+        path = "./Output/simulated_output/Chromosome3D/regular25.pdb"
+    elif (method == "Chromosome3D" and test_file == "regular70.txt"):
+        path = "./Output/simulated_output/Chromosome3D/regular70.pdb"
+    elif (method == "Chromosome3D" and test_file == "regular90.txt"):
+        path = "./Output/simulated_output/Chromosome3D/regular90.pdb"
+
+    all_predictions_scaled = []
+    x_val = []; y_val = []; z_val = []
+    file = open(path, "r")
+    lines = file.readlines()
+    if(method == "HSA"):
+        for line in lines:
+            line = line.strip('\n')
+            l_new = line.split('\t')
+            x_val.append(float(l_new[2]))
+            y_val.append(float(l_new[3]))
+            z_val.append(float(l_new[4]))
+    if(method == "ChromSDE"):
+        for i in range(1, len(lines)):
+            lines[i] = lines[i].strip('\n')
+            l_new = lines[i].split(',')
+            x_val.append(float(l_new[1]))
+            y_val.append(float(l_new[2]))
+            z_val.append(float(l_new[3]))
+    if(method == "Pastis"):
+        for i in range(0, len(lines)):
+            lines[i] = lines[i].strip('\n')
+            l_new = lines[i].split(' ')
+            c = l_new.count('')
+            for j in range(0, c):
+                l_new.remove('')
+            x_val.append(float(l_new[-5]))
+            y_val.append(float(l_new[-4]))
+            z_val.append(float(l_new[-3]))
+    if(method == "ShRec3D"):
+        for i in range(0, len(lines)):
+            lines[i] = lines[i].strip('\n')
+            l_new = lines[i].split(' ')
+            x_val.append(float(l_new[0]))
+            y_val.append(float(l_new[1]))
+            z_val.append(float(l_new[2]))
+    if(method == "3DMax" or method == "LorDG"):
+        for i in range(1, 101):
+            lines[i] = lines[i].strip('\n')
+            l_new = lines[i].split(' ')
+            c = l_new.count('')
+            for j in range(0, c):
+                l_new.remove('')
+            x_val.append(float(l_new[5]))
+            y_val.append(float(l_new[6]))
+            z_val.append(float(l_new[7]))
+    if (method == "Chromosome3D"):
+        for i in range(6, 107):
+            lines[i] = lines[i].strip('\n')
+            l_new = lines[i].split(' ')
+            c = l_new.count('')
+            for j in range(0, c):
+                l_new.remove('')
+            x_val.append(float(l_new[-6]))
+            y_val.append(float(l_new[-5]))
+            z_val.append(float(l_new[-4]))
+
+    all_predictions_scaled = [x_val, y_val, z_val]
+
+    return all_predictions_scaled
+

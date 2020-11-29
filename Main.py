@@ -8,6 +8,7 @@ from Data_Load_Process import load_data
 from Data_Load_Process import rescale_mapping
 from Data_Load_Process import generate_PDB
 from Data_Load_Process import generate_log
+from Data_Load_Process import alternate_method_structures
 from Neural_Models import new_Dense
 from Evaluations import calc_metrics
 
@@ -15,7 +16,7 @@ def main():
     #Get Files
     args = sys.argv
     run_type = 0
-    train_FISH = 1
+    train_FISH = 0
     
     if(len(sys.argv) == 4):
         print("Running with Finetuning")
@@ -44,11 +45,14 @@ def main():
     else:
         print("Wrong Parameters Set!")
         sys.exit()
-    
+
+    #Edit the next 2 variables for testing evaluation
+    method = "Neural_3D_Modeling" #Neural_3D_Modeling, HSA, ChromeSDE, Pastis, ShRec3D, Chromosome3D, 3DMax, LorDG
+    #test_file = "regular90.txt"
+
     #data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
     #mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
-    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/regular70.txt"
-    #test_file = "regular70.txt"
+    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/" + test_file
 
     scale_factor = 100
     IF_alpha = 0.4
@@ -56,7 +60,7 @@ def main():
     batch_size = 20
 
     #Load All Data
-    x_train, y_train, x_train_FISH, y_train_FISH, x_test, input_shape, scales_cal_values, matrix_table_test = load_data(data_path_train, data_path_test, mapping_train, scale_factor, IF_alpha, run_type)
+    x_train, y_train, x_train_FISH, y_train_FISH, x_test, input_shape, scales_cal_values, matrix_table_test = load_data(data_path_train, data_path_test, mapping_train, scale_factor, IF_alpha, run_type, method)
 
     #Generate Models
     x_model = new_Dense(scale_factor+1, input_shape)
@@ -112,14 +116,18 @@ def main():
     all_predictions_scaled = rescale_mapping(all_predictions, scales_cal_values, matrix_table_test)
 
     #Generate PDB File
-    output_file_message = "NEURAL 3D MODELING"
-    generate_PDB(all_predictions_scaled, output_file_message)
+    if(method == "Neural_3D_Modeling"):
+        output_file_message = "NEURAL 3D MODELING"
+        generate_PDB(all_predictions_scaled, output_file_message, method, test_file)
 
     #Evaluations and Write to Log File
+    if(method != "Neural_3D_Modeling"):
+        all_predictions_scaled = alternate_method_structures(method, test_file)
+
     metrics = calc_metrics(all_predictions_scaled, matrix_table_test)
 
-    #WRITE EVALUATIONS
-    generate_log(test_file, IF_alpha, scale_factor, metrics)
+    #Write Evaluations
+    generate_log(test_file, IF_alpha, scale_factor, metrics, method)
 
 if __name__ == "__main__":
     main()

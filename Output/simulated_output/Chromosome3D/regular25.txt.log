@@ -1,0 +1,6 @@
+Input File: regular25.txt
+IF Alpha Value: 0.4
+Scale Factor Value: 100
+AVG RMSE: 3.4734379268377484
+AVG Spearman Correlation Dist vs. Reconstructed Dist: 0.043126552884169445
+AVG Pearson Correlation Dist vs. Reconstructed Dist: 0.03682211109668636

@@ -15,8 +15,6 @@ from Evaluations import calc_metrics
 def main():
     #Get Files
     args = sys.argv
-    run_type = 0
-    train_FISH = 0
     
     if(len(sys.argv) == 4):
         print("Running with Finetuning")
@@ -45,6 +43,9 @@ def main():
     else:
         print("Wrong Parameters Set!")
         sys.exit()
+    
+    run_type = 0
+    train_FISH = 1
 
     #Edit the next 2 variables for testing evaluation
     method = "Neural_3D_Modeling" #Neural_3D_Modeling, HSA, ChromeSDE, Pastis, ShRec3D, Chromosome3D, 3DMax, LorDG
@@ -124,7 +125,7 @@ def main():
     if(method != "Neural_3D_Modeling"):
         all_predictions_scaled = alternate_method_structures(method, test_file)
 
-    metrics = calc_metrics(all_predictions_scaled, matrix_table_test)
+    metrics = calc_metrics(all_predictions_scaled, matrix_table_test, method)
 
     #Write Evaluations
     generate_log(test_file, IF_alpha, scale_factor, metrics, method)

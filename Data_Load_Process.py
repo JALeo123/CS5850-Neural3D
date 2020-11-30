@@ -231,7 +231,7 @@ def rescale_mapping(all_predictions, scales_cal_values, matrix_table_test):
 
 #Generate PDB file
 def generate_PDB(all_predictions, output_file_message, method, test_file):
-    out_pdb = open("./simulated_output/" + method + "/" + test_file + ".pdb", "w")
+    out_pdb = open("./Output/simulated_output/" + method + "/" + test_file + ".pdb", "w")
 
     out_pdb.write(output_file_message + "\n")
     for i in range(1, len(all_predictions[0])):
@@ -276,7 +276,7 @@ def generate_PDB(all_predictions, output_file_message, method, test_file):
 
 #Generate Log File
 def generate_log(test_file, IF_alpha, scale_factor, metrics, method):
-    out_log = open("./simulated_output/" + method + "/" + test_file + ".log", "w")
+    out_log = open("./Output/simulated_output/" + method + "/" + test_file[0:-4] + ".log", "w")
 
     out_log.write("Input File: " + test_file + "\n")
     out_log.write("IF Alpha Value: " + str(IF_alpha) + "\n")
@@ -310,11 +310,11 @@ def alternate_method_structures(method, test_file):
         path = "./Output/simulated_output/ChromSDE/regular90.pos"
 
     elif (method == "Pastis" and test_file == "regular25.txt"):
-        path = "./Output/simulated_output/pastis/PM1.regular25.pdb"
+        path = "./Output/simulated_output/pastis/PM1.regular25.pdb.txt"
     elif (method == "Pastis" and test_file == "regular70.txt"):
-        path = "./Output/simulated_output/pastis/PM1.regular70.pdb"
+        path = "./Output/simulated_output/pastis/PM1.regular70.pdb.txt"
     elif (method == "Pastis" and test_file == "regular90.txt"):
-        path = "./Output/simulated_output/pastis/PM1.regular90.pdb"
+        path = "./Output/simulated_output/pastis/PM1.regular90.pdb.txt"
 
     elif (method == "ShRec3D" and test_file == "regular25.txt"):
         path = "./Output/simulated_output/Shrec3D/regu25.xyz"
@@ -363,15 +363,15 @@ def alternate_method_structures(method, test_file):
             y_val.append(float(l_new[2]))
             z_val.append(float(l_new[3]))
     if(method == "Pastis"):
-        for i in range(0, len(lines)):
+        sel = 0
+        for i in range(3, len(lines)):
             lines[i] = lines[i].strip('\n')
-            l_new = lines[i].split(' ')
-            c = l_new.count('')
-            for j in range(0, c):
-                l_new.remove('')
-            x_val.append(float(l_new[-5]))
-            y_val.append(float(l_new[-4]))
-            z_val.append(float(l_new[-3]))
+            if(sel == 0):
+                x_val.append(float(lines[i])); sel = 1
+            elif(sel == 1):
+                y_val.append(float(lines[i])); sel = 2
+            elif (sel == 2):
+                z_val.append(float(lines[i])); sel = 0
     if(method == "ShRec3D"):
         for i in range(0, len(lines)):
             lines[i] = lines[i].strip('\n')
@@ -390,12 +390,13 @@ def alternate_method_structures(method, test_file):
             y_val.append(float(l_new[6]))
             z_val.append(float(l_new[7]))
     if (method == "Chromosome3D"):
-        for i in range(6, 107):
+        for i in range(0, 100):
             lines[i] = lines[i].strip('\n')
             l_new = lines[i].split(' ')
             c = l_new.count('')
             for j in range(0, c):
                 l_new.remove('')
+
             x_val.append(float(l_new[-6]))
             y_val.append(float(l_new[-5]))
             z_val.append(float(l_new[-4]))

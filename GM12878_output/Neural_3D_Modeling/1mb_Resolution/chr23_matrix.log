@@ -1,0 +1,6 @@
+Input File: chr23_matrix.txt
+IF Alpha Value: 0.5
+Scale Factor Value: 470
+AVG RMSE: 9.017726045555646
+AVG Spearman Correlation Dist vs. Reconstructed Dist: 0.6352020302688194
+AVG Pearson Correlation Dist vs. Reconstructed Dist: 0.6904666559490784

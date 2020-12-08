@@ -1,0 +1,6 @@
+Input File: chr11_matrix.txt
+IF Alpha Value: 0.5
+Scale Factor Value: 470
+AVG RMSE: 8.814683540187483
+AVG Spearman Correlation Dist vs. Reconstructed Dist: 0.48729324212815484
+AVG Pearson Correlation Dist vs. Reconstructed Dist: 0.7250597325520393

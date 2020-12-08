@@ -49,16 +49,24 @@ def main():
 
     #Edit the next 2 variables for testing evaluation
     method = "Neural_3D_Modeling" #Neural_3D_Modeling, HSA, ChromeSDE, Pastis, ShRec3D, Chromosome3D, 3DMax, LorDG
-    #test_file = "regular90.txt"
 
+    #test_file = "regular90.txt"
+    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/" + test_file
+    #output_path = "./Output/simulated_output/" + method + "/"
     #data_path_train = "./Data/NeuralRun_Data/Matrix_Data/regular90.txt"
     #mapping_train = "./Data/NeuralRun_Data/Train_Structures/regular90/best_structure_regular90_IF.pdb"
-    #data_path_test = "./Data/NeuralRun_Data/Matrix_Data/" + test_file
+    
+    #test_file = "chr23_matrix.txt"
+    #data_path_test = "./Data/NeuralRun_Data/GM12878/KR_1mb/" + test_file
+    #output_path = "./GM12878_output/" + method + "/1mb_Resolution/"
+    #data_path_train = "./Data/NeuralRun_Data/GM12878/KR_1mb/chr1_matrix.txt"
+    #mapping_train = "./Data/NeuralRun_Data/Train_Structures/GM12878_3DStructures/KR_1mb/3DMax/chr1.pdb"
 
-    scale_factor = 100
-    IF_alpha = 0.4
-    epochs = 40
-    batch_size = 20
+
+    scale_factor = 470
+    IF_alpha = 0.5
+    epochs = 20
+    batch_size = 40
 
     #Load All Data
     x_train, y_train, x_train_FISH, y_train_FISH, x_test, input_shape, scales_cal_values, matrix_table_test = load_data(data_path_train, data_path_test, mapping_train, scale_factor, IF_alpha, run_type, method)
@@ -119,7 +127,7 @@ def main():
     #Generate PDB File
     if(method == "Neural_3D_Modeling"):
         output_file_message = "NEURAL 3D MODELING"
-        generate_PDB(all_predictions_scaled, output_file_message, method, test_file)
+        generate_PDB(all_predictions_scaled, output_file_message, method, test_file, output_path)
 
     #Evaluations and Write to Log File
     if(method != "Neural_3D_Modeling"):
@@ -128,7 +136,7 @@ def main():
     metrics = calc_metrics(all_predictions_scaled, matrix_table_test, method)
 
     #Write Evaluations
-    generate_log(test_file, IF_alpha, scale_factor, metrics, method)
+    generate_log(test_file, IF_alpha, scale_factor, metrics, method, output_path)
 
 if __name__ == "__main__":
     main()

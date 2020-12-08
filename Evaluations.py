@@ -9,7 +9,7 @@ def calc_metrics(all_predictions_scaled, matrix_table_test, method):
     dist_actual = []
     dist_actual_actual = []
     x = []; y = []; z = []
-    if(method != "Neural_3D_Modeling" or method == "Neural_3D_Modeling"):
+    if(method != "Neural_3D_Modeling"):
         file = open("./Data/NeuralRun_Data/Matrix_Data/regularstructre.txt")
         lines = file.readlines()
         for line in lines:

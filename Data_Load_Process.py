@@ -57,9 +57,11 @@ def matrix_to_table(file, type, method):
     for line in lines:
         line = line.strip('\n')
         l_new = line.split('\t')
+        if(l_new[-1] == ''):
+            l_new = l_new[0:-1]
 
         for i in range(len(l_new)):
-            l_new[i] = int(l_new[i])
+            l_new[i] = int(float(l_new[i]))
         matrix_lists.append(l_new.copy())
 
     matrix_table = []
@@ -140,9 +142,9 @@ def scale_mapping(file_train_mapping, scale_factor):
     y_labels = []
     z_labels = []
     for i in range(len(select_lines)):
-        x_labels.append(float(select_lines[i][0]))
-        y_labels.append(float(select_lines[i][1]))
-        z_labels.append(float(select_lines[i][2]))
+        x_labels.append(float(select_lines[i][0]) + 20)
+        y_labels.append(float(select_lines[i][1]) + 20)
+        z_labels.append(float(select_lines[i][2]) + 20)
 
     scale_calc_x = scale_factor / max(x_labels)
     scale_calc_y = scale_factor / max(y_labels)
@@ -230,8 +232,8 @@ def rescale_mapping(all_predictions, scales_cal_values, matrix_table_test):
     return rescaled_predictions
 
 #Generate PDB file
-def generate_PDB(all_predictions, output_file_message, method, test_file):
-    out_pdb = open("./Output/simulated_output/" + method + "/" + test_file + ".pdb", "w")
+def generate_PDB(all_predictions, output_file_message, method, test_file, output_path):
+    out_pdb = open(output_path + test_file[0:-4] + ".pdb", "w")
 
     out_pdb.write(output_file_message + "\n")
     for i in range(1, len(all_predictions[0])):
@@ -275,8 +277,8 @@ def generate_PDB(all_predictions, output_file_message, method, test_file):
     out_pdb.close()
 
 #Generate Log File
-def generate_log(test_file, IF_alpha, scale_factor, metrics, method):
-    out_log = open("./Output/simulated_output/" + method + "/" + test_file[0:-4] + ".log", "w")
+def generate_log(test_file, IF_alpha, scale_factor, metrics, method, output_path):
+    out_log = open(output_path + "/" + test_file[0:-4] + ".log", "w")
 
     out_log.write("Input File: " + test_file + "\n")
     out_log.write("IF Alpha Value: " + str(IF_alpha) + "\n")
